@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    max-width: 800px;
+    height: 350px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    
+}
+
+.form-container {
+    flex: 70%;
+    padding-right: 10px;
+}
+
+.button-container {
+    flex: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+h2 {
+    text-align: left;
+}
+
+p {
+    text-align: left;
+    font-size: 16px;
+    font-weight: lighter;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 50px;
+    font-size: 18px;
+}
+
+
+button[type="submit"] {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+button {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+}
+
+button[type="submit"]:hover {
+    background-color: #333;
+}

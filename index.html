@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="container">
+    <div class="form-container">
+        <h2>Add User</h2>
+        <p>Submit the details of the user to be added</p>
+       
+        <form id="addUserForm">
+            <div class="input-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="John Smith" required>
+            </div>
+            <div class="input-group">
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Product & Services">Product & Services</option>
+                    <option value="Executives">Executives</option>
+                </select>
+            </div>
+            <!-- Add the Submit button within the form -->
+            <div class="button-container">
+                <button type="button" onclick="resetForm()">Reset</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    // JavaScript to handle form submission with AJAX
+    document.getElementById("addUserForm").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        const formData = new FormData(this);
+        const data = {
+            fullName: formData.get("fullName"),
+            role: formData.get("role"),
+        };
+        
+        try {
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            
+            if (response.ok) {
+                alert("User added successfully!");
+                this.reset(); // Clear the form fields
+            } else {
+                alert("Error adding user to database.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred.");
+        }
+    });
+
+    function resetForm() {
+        document.getElementById("addUserForm").reset();
+    }
+</script>
+</body>
+</html>
